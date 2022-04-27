@@ -1,0 +1,20 @@
+.button {
+    border: 0;
+    background: var(--color-black);
+    color: white;
+    border-radius: 9999px;
+    font-weight: 800;
+    padding: 8px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+
+.button:hover {
+    opacity: .7;
+}
+
+.button[disabled] {
+    pointer-events: none;
+    opacity: 0.2;
+}

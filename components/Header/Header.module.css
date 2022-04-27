@@ -1,0 +1,26 @@
+.header {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    padding: 8px;
+}
+
+.header {
+    top: 0;
+}
+
+.header > div{
+    margin-left: 15px;
+}
+
+.header h2 {
+    margin: 0;
+    margin-left: 15px;
+}
+
+.logoWrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
