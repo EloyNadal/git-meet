@@ -34,3 +34,7 @@ yarn-error.log*
 
 # firebase keys
 /services/firebase/firebase-keys.json
+
+# Certififados para https
+/certificates
+server.js
