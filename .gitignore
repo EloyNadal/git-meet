@@ -37,4 +37,4 @@ yarn-error.log*
 
 # Certififados para https
 /certificates
-server.js
+/server.js
