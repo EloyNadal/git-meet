@@ -1,9 +1,11 @@
 import styles from './Button.module.css';
 
-export default function Button({ children, disabled, onClick }) {
+export default function Button({ children, disabled, onClick, className }) {
+
+
 
     return (
-        <button className={styles.button} onClick={onClick} disabled={disabled}>
+        <button className={`${styles.button} ${styles[className]}`} onClick={onClick} disabled={disabled}>
             {children}
         </button>
     )

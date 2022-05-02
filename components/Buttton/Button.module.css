@@ -1,13 +1,22 @@
 .button {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: .9rem 1.5rem 1.1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    background: linear-gradient(180deg,hsla(0,0%,100%,.15) 0,hsla(0,0%,100%,0) 100%), #f6f8fa;
+    color: #000;
     border: 0;
-    background: var(--color-black);
-    color: white;
-    border-radius: 9999px;
-    font-weight: 800;
-    padding: 8px 24px;
-    font-size: 16px;
+    border-radius: .375rem;
+    transition: box-shadow .2s;
+    appearance: none;
     cursor: pointer;
-    transition: opacity .3s ease;
 }
 
 .button:hover {
@@ -18,3 +27,15 @@
     pointer-events: none;
     opacity: 0.2;
 }
+
+.secondary {
+    background: transparent;
+    color: #c9D1D9;
+    box-shadow: rgb(255 255 255/25%) 0 0 0 1px inset;
+}
+
+.secondary:hover {
+    box-shadow: #fff 0 0 0 2px inset;
+    opacity: 1;
+}
+

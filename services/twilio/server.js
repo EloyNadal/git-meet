@@ -22,7 +22,7 @@ export const findOrCreateRoom = async (roomName) => {
         if(error.code == 20404) {
             await client.video.rooms.create({
                 uniqueName: roomName,
-                type: 'go',
+                type: 'group',
             });
         }
         else{
