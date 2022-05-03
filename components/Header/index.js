@@ -4,6 +4,7 @@ import GitHub from "components/Icons/GitHub";
 import useUser, {USER_STATES} from "hooks/useUser";
 import Image from "next/image";
 import styles from './Header.module.css'
+import { loginWithGitHub } from "services/firebase/client";
 
 export default function Header() {
 

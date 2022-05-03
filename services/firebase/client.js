@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc, Timestamp, query, orderBy, onSnapshot } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 import { getAuth, GithubAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
-import { ref, uploadBytes, getStorage, getDownloadURL } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -16,9 +15,8 @@ const app = !getApps().length && initializeApp(firebaseConfig);
 const db = getFirestore();
 
 const mapUserFromFirebaseAuth = (user) => {
-
+    
     const { reloadUserInfo, uid } = user;
-    //console.log({reloadUserInfo});
     const { screenName, photoUrl, displayName } = reloadUserInfo;
     const gitHubUrl = 'https://github.com/';
 
@@ -26,7 +24,8 @@ const mapUserFromFirebaseAuth = (user) => {
         avatar: photoUrl,
         blog: `${gitHubUrl}${screenName}`,
         userName: displayName,
-        uid
+        uid,
+        gitName: screenName,
     };
 }
 
@@ -60,7 +59,6 @@ export const loginWithGitHub = () => {
     const auth = getAuth();
     const porvider = new GithubAuthProvider();
 
-    //return signInWithPopup(auth, porvider);
     return signInWithPopup(auth, porvider)
         .then((result) => {
 

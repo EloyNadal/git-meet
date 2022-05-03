@@ -31,13 +31,21 @@ export const findOrCreateRoom = async (roomName) => {
     }
 }
 
-export const getAccessToken = (roomName) => {
+
+/**
+ * @todo Por el momento, solo se puede unir usuario autenticado. 
+ * Mirar de hacerlo para usuarios anónimos
+ * @param {*} roomName 
+ * @param {*} userName 
+ * @returns 
+ */
+export const getAccessToken = (roomName, userName) => {
 
     const token = new AccessToken(
         process.env.TWILIO_ACCOUNT_SID,
         process.env.TWILIO_API_KEY_SID,
         process.env.TWILIO_API_KEY_SECRET,
-        { identity: uuidv4() }
+        { identity: userName }
     );
 
     const videoGrant = new VideoGrant({

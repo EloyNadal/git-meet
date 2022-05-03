@@ -1,8 +1,6 @@
 import { connect } from "twilio-video";
 
-export const startRoom = async () => {
-
-    const roomName = 'test';
+export const startRoom = async (roomId, userName) => {
 
     const response = await fetch("/api/join-room", {
         method: "POST",
@@ -10,19 +8,19 @@ export const startRoom = async () => {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ roomName: roomName }),
+        body: JSON.stringify({ roomId, userName }),
     });
 
     const { token } = await response.json();
 
-    const room = await joinVideoRoom(roomName, token);
+    const room = await joinVideoRoom(roomId, token);
 
     return room;
 }
 
-async function joinVideoRoom(roomName, token) {
+async function joinVideoRoom(roomId, token) {
     const room = await connect(token, {
-        room: roomName
+        room: roomId
     });
 
     return room;

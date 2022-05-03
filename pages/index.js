@@ -13,8 +13,6 @@ export default function Home() {
   const user = useUser();
   const router = useRouter();
 
-  const [room, setRoom] = useState(null);
-
   /**
    * @todo
    * Cada vez que creemos una sala, redirigiremos a una nueva url y la crearemos allí
@@ -22,13 +20,7 @@ export default function Home() {
    */
 
   const handelClick = () => {
-    console.log(uuidv4().length);
     router.push(`/room/${uuidv4()}`);
-  }
-
-  const createRoom = async () => {
-    const room = await startRoom();
-    setRoom(room);
   }
 
   return (
