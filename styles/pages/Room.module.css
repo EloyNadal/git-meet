@@ -46,14 +46,15 @@
     background-color: white;
     border-radius: 5px;
     min-width: 320px;
+    padding: 10px 20px;
 }
 
 .room__participants_list ul {
     list-style: none;
-    padding: 10px;
+    padding: 0px;
     margin: 0;
 }
 
 .room__participants_list li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }

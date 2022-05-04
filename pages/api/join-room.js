@@ -11,7 +11,11 @@ export default function handler(req, res) {
 
     findOrCreateRoom(roomName);
 
-    const token = getAccessToken(roomName, userName);
-
-    res.status(200).json({ token });
+    try {
+        const token = getAccessToken(roomName, userName);
+        res.status(200).json({ token });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+    
   }
