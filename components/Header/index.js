@@ -5,6 +5,7 @@ import useUser, { USER_STATES } from "hooks/useUser";
 import Image from "next/image";
 import styles from './Header.module.css'
 import { loginWithGitHub } from "services/firebase/client";
+import Link from "next/link";
 
 export default function Header({ withButtons = true }) {
 
@@ -16,12 +17,20 @@ export default function Header({ withButtons = true }) {
         console.log(err)
       })
   }
+ 
+
+  const handelClickRoom = () => {
+    router.push(`/room/${uuidv4()}`);
+  }
 
   return (
     <header className={styles.header}>
 
       <div className={styles.logoWrapper}>
-        <GitHub fill='#fff' width={32} height={32} />
+        <Link href="/">
+          <a><GitHub fill='#fff' width={32} height={32} /></a>
+        </Link>
+        
         <h1 className={styles.logo}>/ GitMeet</h1>
       </div>
 
@@ -34,9 +43,8 @@ export default function Header({ withButtons = true }) {
             </Button>
           }
           
-          <Button className={'secondary'}>Iniciar nueva reunión</Button>
-          <Button>Unirse a reunión</Button>
-
+          <Button onClick={handelClickRoom} className={'secondary'}>Iniciar nueva reunión</Button>
+          
           {
             user === USER_STATES.NOT_KNOWN && <Image src={'/spinner.gif'} alt='loading' width={100} height={100} />
           }

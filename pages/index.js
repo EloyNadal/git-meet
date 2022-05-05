@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import Layout from 'components/Layout';
 import useUser from 'hooks/useUser';
 import Button from 'components/Buttton';
-import { startRoom } from 'services/twilio/client.js';
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from 'styles/pages/Home.module.css';
@@ -12,16 +11,24 @@ export default function Home() {
 
   const user = useUser();
   const router = useRouter();
+  const [isClicked, setIsClicked] = useState(false);
+  const inputRef = useRef(null);
 
-  /**
-   * @todo
-   * Cada vez que creemos una sala, redirigiremos a una nueva url y la crearemos allí
-   * - Enviar nombre de usuario
-   */
-
-  const handelClick = () => {
-    router.push(`/room/${uuidv4()}`);
+  const handelClickStartRoom = () => {
+    router.push(`/room/${inputRef.current.value || uuidv4()}`);
   }
+
+  // handle click go to room
+  const handleClickGoToRoom = () => {
+    setIsClicked(true);
+    inputRef.current.focus();
+  }
+
+  //unirse a reunion
+  const handleClickJoinRoom = () => {
+    handelClickStartRoom(inputRef.current.value);
+  };
+
 
   return (
     <Layout>
@@ -31,8 +38,21 @@ export default function Home() {
       </div>
 
       <div className={styles.buttonsWrapper}>
-        <Button onClick={handelClick}>Iniciar nueva reunión</Button>
-        <Button className={'secondary'} onClick={handelClick}>Unirse a reunión</Button>
+        <Button onClick={handelClickStartRoom}>Iniciar nueva reunión</Button>
+        <input
+          className={styles.input}
+          type='text'
+          placeholder="Introduce dirección de reunión"
+          style={{ display: isClicked ? 'inline-block' : 'none' }}
+          ref={inputRef}
+        />
+
+        <Button className={'secondary'} onClick={handelClickStartRoom}
+          style={{ display: isClicked ? 'inline-block' : 'none' }}>
+           Ir
+        </Button>
+
+        <Button className={'secondary'} onClick={handleClickGoToRoom} style={{ display: isClicked ? 'none' : 'inline-block' }}>Unirse a reunión</Button>
       </div>
     </Layout>
   )

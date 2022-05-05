@@ -9,12 +9,6 @@ import { startRoom } from "services/twilio/client";
 
 import styles from 'styles/pages/Room.module.css';
 
-const ROOM_STATE = {
-    CREATING: 'CREATING',
-    JOINING: 'JOINING',
-    JOINED: 'JOINED',
-    ERROR: 'ERROR'
-};
 
 export default function LiveRoom({ roomId }) {
 
@@ -44,10 +38,6 @@ export default function LiveRoom({ roomId }) {
 
         participant.removeAllListeners();
         setParticipants(prevParticipants => prevParticipants.filter(p => p.sid !== participant.sid));
-
-        /* if(participants.length === 0) {
-          room.disconnect();
-        } */
     };
 
     const handleCloseRoom = (room) => {
