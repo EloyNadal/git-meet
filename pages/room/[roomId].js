@@ -112,7 +112,7 @@ export default function LiveRoom({ roomId }) {
                 <div className={styles.room__principal_list_container}>
 
                     <div className={styles.room__principal}>
-                        {room && participants.map(participant => <TrackPublication key={participant.identity} participant={participant} />)}
+                        {room && participants.map((participant, index, arrayParticipants) => <TrackPublication key={participant.identity} participant={participant} numParticipants={arrayParticipants.length} />)}
                     </div>
 
 

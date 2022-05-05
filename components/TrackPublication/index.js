@@ -3,7 +3,7 @@ import Track from 'components/Track';
 import styles from './TrackPublication.module.css';
 
 
-export default function TrackPublication({ participant }) {
+export default function TrackPublication({ participant, numParticipants }) {
 
     const [trackPublications, setTrackPublications] = useState([]);
 
@@ -35,7 +35,7 @@ export default function TrackPublication({ participant }) {
             {trackPublications.map((trackPublication) => {
                 return (
                     <div key={trackPublication.trackSid}>
-                        <Track trackPublication={trackPublication} />
+                        <Track trackPublication={trackPublication} numParticipants={numParticipants}/>
                     </div>
                 );
             }

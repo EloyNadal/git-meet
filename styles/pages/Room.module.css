@@ -58,3 +58,23 @@
 .room__participants_list li {
     margin-bottom: 15px;
 }
+
+@media screen and (max-width: 768px) {
+    .room__principal_list_container {
+        flex-direction: column;
+    }
+
+    .room__principal {
+        flex-direction: column;
+    }
+
+    .room__principal .video {
+        width: 100%;
+        height: auto;
+    }
+
+    .room__participants_list {
+        width: 100%;
+    }
+    
+}
