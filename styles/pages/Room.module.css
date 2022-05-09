@@ -12,11 +12,11 @@
 
 .room__principal {
     flex: 1;
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 20px; */
 
    /*  display: grid;
     --gap: 20px;
@@ -28,6 +28,12 @@
     grid-template-columns: repeat(auto-fill, minmax(max(var(--min-widht), var(--max-widht)), 1fr));
     grid-gap: var(--gap);
     place-items: center; */
+
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+    
+
 }
 
 .track__container {
@@ -46,13 +52,18 @@
     background-color: white;
     border-radius: 5px;
     min-width: 320px;
-    padding: 10px 20px;
+    padding: 0px 20px;
+
+    display: flex;
+    flex-direction: column;
+
 }
 
 .room__participants_list ul {
     list-style: none;
     padding: 0px;
     margin: 0;
+    flex: auto;
 }
 
 .room__participants_list li {

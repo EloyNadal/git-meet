@@ -1,14 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
 import styles from './Track.module.css';
 
-export default function Track({ trackPublication, numParticipants }) {
+export default function Track({ trackPublication }) {
 
     const [track, setTrack] = useState([]);
     const videoRef = useRef();
-
-    const originalHeight = 480;
-    const maxHeight = numParticipants < 4 ? '480' : '300';
-
 
     useEffect(() => {
 
@@ -66,11 +62,11 @@ export default function Track({ trackPublication, numParticipants }) {
 
 
     return (
-        <div className={styles.video__container}>
+        <>
             {track && track.kind === 'video'
-                && <video className={styles.video} ref={videoRef} height={`${maxHeight}px`}/>
+                && <video className={styles.video} ref={videoRef} />
             }
-        </div>
+        </>
     );
 
 }

@@ -6,7 +6,8 @@
     position: relative;
     overflow-y: auto;
     display: grid;
-    grid-template-rows: min-content auto min-content;
+    /* grid-template-rows: min-content auto min-content; */
+    grid-template-rows: 70px calc(100vh - 140px) 70px;
 }
 
 .section {
@@ -19,7 +20,7 @@
     display: flex;
     align-items: center;
     z-index: 2;
-    padding: 20px 30px; 
+    padding: 0px 20px; 
     background: var(--color-header-bg);
     border-bottom: 1px solid rgba(255,255,255, .1);
     color: #c9D1D9;

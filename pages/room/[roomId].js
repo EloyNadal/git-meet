@@ -101,22 +101,26 @@ export default function LiveRoom({ roomId }) {
 
                 <div className={styles.room__principal_list_container}>
 
-                    <div className={styles.room__principal}>
-                        {room && participants.map((participant, index, arrayParticipants) => <TrackPublication key={participant.identity} participant={participant} numParticipants={arrayParticipants.length} />)}
+                    <div className={`${styles.room__principal} ${participants.length}-participans`}>
+                        {room && participants.map((participant) => <TrackPublication key={participant.identity} participant={participant} />)}
                     </div>
 
 
-                    <div className={styles.room__participants_list}>
-                        <p>En la llamada</p>
+                    <section className={styles.room__participants_list}>
+                        <header>
+                            <h4>En la llamada</h4>
+                        </header>
+                        
                         <ul>
                             {participants.map(participant => (
-
                                 <li key={participant.sid}>
                                     <Participant id={participant.identity}  />
                                 </li>
                             ))}
                         </ul>
-                    </div>
+
+                        <footer><p>Sub footer con menú</p></footer>
+                    </section>
 
                 </div>
             </div>
