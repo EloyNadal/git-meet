@@ -5,7 +5,24 @@
   --color-background: #0d1117;
   --color-font-light: #c9D1D9;
   --color-font-dark: #000;
+
+  --step--2: clamp(0.78rem, calc(0.70rem + 0.43vw), 1.00rem);
+  --step--1: clamp(0.94rem, calc(0.82rem + 0.61vw), 1.25rem);
+  --step-0: clamp(1.13rem, calc(0.95rem + 0.85vw), 1.56rem);
+  --step-1: clamp(1.35rem, calc(1.11rem + 1.18vw), 1.95rem);
+  --step-2: clamp(1.62rem, calc(1.30rem + 1.60vw), 2.44rem);
+  --step-3: clamp(1.94rem, calc(1.51rem + 2.16vw), 3.05rem);
+  --step-4: clamp(2.33rem, calc(1.75rem + 2.89vw), 3.82rem);
+  --step-5: clamp(2.80rem, calc(2.03rem + 3.84vw), 4.77rem);
+
+  --space-xs-xs: clamp(0.88rem, calc(0.75rem + 0.61vw), 1.19rem);
+  --space-s-s: clamp(1.13rem, calc(0.95rem + 0.85vw), 1.56rem);
 }
+
+.d-none {
+  display: none;
+}
+
 
 html,
 body {
@@ -30,6 +47,11 @@ a {
   box-sizing: border-box;
 }
 
+@media (min-width: 576px) { 
+  .d-none.d-sm-inline-block {
+    display: inline-block;
+  }
+}
 /* @media (min-width: 500px) {
   main {
       width: 500px;

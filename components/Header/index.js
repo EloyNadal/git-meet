@@ -43,7 +43,7 @@ export default function Header({ withButtons = true }) {
             </Button>
           }
           
-          <Button onClick={handelClickRoom} className={'secondary'}>Iniciar nueva reunión</Button>
+          <Button onClick={handelClickRoom} className={'secondary'} globalClasses={'d-none d-sm-inline-block'}>Iniciar nueva reunión</Button>
           
           {
             user === USER_STATES.NOT_KNOWN && <Image src={'/spinner.gif'} alt='loading' width={100} height={100} />

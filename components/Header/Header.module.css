@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     z-index: 2;
-    padding: 20px 30px; 
+    padding: var(--space-xs-xs) var(--space-s-s); 
     background: var(--color-header-bg);
     border-bottom: 1px solid rgba(255,255,255, .1);
     color: #c9D1D9;
@@ -13,8 +13,9 @@
 .header h1 {
     margin: 0;
     margin-left: 5px;
-    font-size: 24px;
+    font-size: var(--step-0);
 }
+
 
 .logoWrapper {
     display: flex;

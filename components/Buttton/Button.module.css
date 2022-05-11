@@ -1,9 +1,8 @@
 .button {
     position: relative;
     z-index: 1;
-    display: inline-block;
     padding: 1rem 1.5rem 1rem;
-    font-size: 1rem;
+    font-size: var(--step--2);
     font-weight: 700;
     line-height: 1;
     text-align: center;
@@ -38,4 +37,3 @@
     box-shadow: #fff 0 0 0 2px inset;
     opacity: 1;
 }
-

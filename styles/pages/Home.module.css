@@ -5,7 +5,7 @@
 
 .title {
     color: #fff;
-    font-size: 72px;
+    font-size: var(--step-4);
     max-width: 980px;
     font-weight: 800;
     text-align: center;
@@ -18,7 +18,7 @@
   
 .subtitle {
     color: var(--color-font-light);
-    font-size: 20px;
+    font-size: var(--step-0);
     text-align: center;
     margin-bottom: 40px;
 }
