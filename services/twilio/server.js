@@ -23,6 +23,7 @@ export const findOrCreateRoom = async (roomName) => {
             await client.video.rooms.create({
                 uniqueName: roomName,
                 type: 'group',
+                maxParticipants: 9,
             });
         }
         else{
