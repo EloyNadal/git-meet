@@ -4,10 +4,9 @@ import RoomLayout from 'components/RoomLayout';
 import Participant from 'components/Participant';
 import TrackPublication from 'components/TrackPublication';
 import { v4 as uuidv4 } from 'uuid';
-
 import { startRoom } from "services/twilio/client";
-
 import styles from 'styles/pages/Room.module.css';
+import { useAppContext } from 'context/state';
 
 
 export default function LiveRoom({ roomId }) {
@@ -16,9 +15,12 @@ export default function LiveRoom({ roomId }) {
     const [participants, setParticipants] = useState([]);
     const user = useUser();
 
+    const mycontext = useAppContext();
+
     globalThis.test = () => {
         return {
-            room
+            room,
+            mycontext
         };
     };
 
@@ -94,6 +96,10 @@ export default function LiveRoom({ roomId }) {
         }
 
     }, [room]);
+
+    useEffect(() => {
+        console.log('change video state: ', {mycontext});
+    }, [mycontext])
 
     return (
         <RoomLayout>

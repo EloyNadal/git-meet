@@ -1,6 +1,7 @@
-import Header from 'components/Header';
-import GitHub from 'components/Icons/GitHub';
+import { useAppContext } from 'context/state';
 import Link from 'next/link';
+import GitHub from 'components/Icons/GitHub';
+import Button from 'components/Buttton';
 import styles from './RoomLayout.module.css';
 
 /**
@@ -9,6 +10,8 @@ import styles from './RoomLayout.module.css';
  */
 
 export default function RoomLayout({ children }) {
+
+    const mycontext = useAppContext();
 
     return (
         <main className={styles.layout}>
@@ -26,7 +29,11 @@ export default function RoomLayout({ children }) {
                 {children}
             </section>
 
-            {/* <Header withButtons={false} /> */}
+            <footer>
+                <Button onClick={mycontext.handleChangeEnabledVideo}>
+                    {mycontext.videoIsEnabled ? 'Desactivar' : 'Activar'}
+                </Button>
+            </footer>
         </main>
     );
 }

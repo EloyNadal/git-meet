@@ -19,7 +19,7 @@ export default function Track({ trackPublication }) {
         setTrack(trackPublication && trackPublication.track);
 
         if (trackPublication) {
-
+            trackPublication.on('enabled', () => { console.log('Track enabled: ', trackPublication.track); });
             trackPublication.on('subscribed', handleTrackStarted);
             trackPublication.on('unsubscribed', removeTrack);
             return () => {
