@@ -8,19 +8,12 @@ export default function Track({ trackPublication, userIdentity }) {
     useEffect(() => {
 
         const removeTrack = () => setTrack(null);
-        const handleTrackStarted = (track) => {
-            console.log('Add Track: ', track);
-            setTrack(track);
-        }
-
-        console.log('Track started: ', trackPublication.track);
+        const handleTrackStarted = (track) => setTrack(track);
 
         // Reset the track when the 'trackPublications' variable changes.
         setTrack(trackPublication && trackPublication.track);
 
         if (trackPublication) {
-            trackPublication.on('enabled', () => { console.log('Track enabled: ', trackPublication.track); });
-            trackPublication.on('disabled', () => { console.log('Track disabled: ', trackPublication.track); });
             trackPublication.on('subscribed', handleTrackStarted);
             trackPublication.on('unsubscribed', removeTrack);
             return () => {

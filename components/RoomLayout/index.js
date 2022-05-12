@@ -1,5 +1,4 @@
 import { useAppContext } from 'context/state';
-import Link from 'next/link';
 import GitHub from 'components/Icons/GitHub';
 import Button from 'components/Button';
 import styles from './RoomLayout.module.css';
@@ -18,9 +17,9 @@ export default function RoomLayout({ children }) {
 
             <header className={styles.header}>
                 <div className={styles.logoWrapper}>
-                    <Link href="/">
-                        <a><GitHub fill='#fff' width={32} height={32} /></a>
-                    </Link>
+                    <a onClick={mycontext.handleExitRoom}>
+                        <GitHub fill='#fff' width={32} height={32} />
+                    </a>
                     <h1 className={styles.logo}>/ GitMeet</h1>
                 </div>
             </header>

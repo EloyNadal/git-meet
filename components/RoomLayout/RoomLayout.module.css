@@ -36,6 +36,10 @@
     align-items: center;
 }
 
+.logoWrapper a {
+    cursor: pointer;
+}
+
 .layout footer {
     display: flex;
     justify-content: center;
