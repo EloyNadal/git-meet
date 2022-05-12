@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useState, useRef } from 'react';
 import Layout from 'components/Layout';
 import useUser from 'hooks/useUser';
-import Button from 'components/Buttton';
+import Button from 'components/Button';
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from 'styles/pages/Home.module.css';

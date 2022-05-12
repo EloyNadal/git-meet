@@ -5,7 +5,7 @@
 
 .room__principal_list_container {
     display: flex;
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
     gap: 20px;
     height: 100%;
 }
@@ -32,8 +32,6 @@
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
-    
-
 }
 
 .track__container {
@@ -52,16 +50,26 @@
     background-color: white;
     border-radius: 5px;
     min-width: 320px;
-    padding: 0px 20px;
+    
 
     display: flex;
     flex-direction: column;
 
 }
 
+.room__participants_list header{
+    padding: 10px 20px;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+
+.room__participants_list h4 {
+    margin: 0;
+}
+
 .room__participants_list ul {
     list-style: none;
-    padding: 0px;
+    padding: 5px 20px;
     margin: 0;
     flex: auto;
 }
@@ -70,22 +78,43 @@
     margin-bottom: 15px;
 }
 
+.room__participants_list footer {
+    border-top: 1px solid #d4d4d4;
+    display: flex;
+    gap: 0;
+}
+
+.room__participants_list footer button {
+    flex: 1;
+    border-radius: 0;
+}
+
+.room__participants_list footer button:hover {
+    background: linear-gradient(180deg,hsla(0,0%,100%,.15) 0,hsla(0,0%,100%,0) 100%), #b2b2b2;
+    opacity: 1;
+}
+
+
 @media screen and (max-width: 768px) {
     .room__principal_list_container {
         flex-direction: column;
+        padding: 10px;
     }
-
     .room__principal {
-        flex-direction: column;
-    }
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;  
 
-    .room__principal .video {
-        width: 100%;
-        height: auto;
     }
 
     .room__participants_list {
         width: 100%;
+    }
+
+    .room__participants_list ul {
+        overflow: auto;
+        max-height: 175px;
     }
     
 }

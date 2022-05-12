@@ -1,5 +1,4 @@
 .layout {
-    border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     min-height: 100vh;
     width: 100%;
@@ -7,7 +6,7 @@
     overflow-y: auto;
     display: grid;
     /* grid-template-rows: min-content auto min-content; */
-    grid-template-rows: 70px calc(100vh - 140px) 70px;
+    grid-template-rows: 70px calc(100vh - 150px) 70px 10px;
 }
 
 .section {
@@ -35,4 +34,17 @@
 .logoWrapper {
     display: flex;
     align-items: center;
+}
+
+.layout footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background: #ffffff0f;
+}
+
+.layout footer button {
+    padding: 0.75rem 1rem 0.75rem;
+    border-radius: 50%;
 }

@@ -14,6 +14,7 @@ export default function TrackPublication({ participant }) {
             setTrackPublications(prevPublications => [...prevPublications, trackPublications]);
         };
         const handleTrackUnpublished = (trackPublications) => {
+            console.log('Track unpublished: ', trackPublications);
             setTrackPublications(prevPublications => prevPublications.filter(p => p !== trackPublications));
         };
 
@@ -22,6 +23,11 @@ export default function TrackPublication({ participant }) {
 
         participant.on('trackPublished', handleTrackPublication);
         participant.on('trackUnpublished', handleTrackUnpublished);
+        participant.on('trackRemoved', () => console.log('Track removed'));
+        participant.on('trackDisabled', () => console.log('Track disabled'));
+        participant.on('trackUnsuscribed', () => console.log('Track unsuscribed'));
+        participant.on('trackStopped', () => console.log('Track stopped'));
+        
 
         return () => {
             participant.off('trackPublished', handleTrackPublication);
@@ -33,7 +39,7 @@ export default function TrackPublication({ participant }) {
     return (
         <>
             {trackPublications.map((trackPublication) => 
-                <Track key={trackPublication.trackSid} trackPublication={trackPublication} /> 
+                <Track key={trackPublication.trackSid} trackPublication={trackPublication} userIdentity={participant.identity}/> 
             )}
         </>
     );

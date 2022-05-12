@@ -7,6 +7,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { startRoom } from "services/twilio/client";
 import styles from 'styles/pages/Room.module.css';
 import { useAppContext } from 'context/state';
+import Button from 'components/Button';
+import People from 'components/Icons/People';
+import Chat from 'components/Icons/Chat';
+import Settings from 'components/Icons/Settings';
 
 
 export default function LiveRoom({ roomId }) {
@@ -27,7 +31,7 @@ export default function LiveRoom({ roomId }) {
     const handleConnectedParticipant = (participant) => {
         console.log('Participant connected: ', participant);
 
-        if(participants.find(p => p.sid === participant.sid)) return;
+        if (participants.find(p => p.sid === participant.sid)) return;
 
         setParticipants((prevParticipants => {
             const newParticipants = [...prevParticipants, participant];
@@ -52,13 +56,13 @@ export default function LiveRoom({ roomId }) {
         console.log('Estado usuario: ', user);
         const createRoom = async (userName) => {
             const room = await startRoom(roomId, userName);
-            if(!room) {
+            if (!room) {
                 return;
             }
             setRoom(room);
         }
 
-        if(user === USER_STATES.NOT_LOGGED) {
+        if (user === USER_STATES.NOT_LOGGED) {
             console.log('guest: ');
             createRoom(uuidv4());
         }
@@ -73,6 +77,8 @@ export default function LiveRoom({ roomId }) {
 
         //Conectar a la sala
         if (room) {
+
+            mycontext.setContextRoom(room);
 
             // participante local
             handleConnectedParticipant(room.localParticipant);
@@ -97,10 +103,6 @@ export default function LiveRoom({ roomId }) {
 
     }, [room]);
 
-    useEffect(() => {
-        console.log('change video state: ', {mycontext});
-    }, [mycontext])
-
     return (
         <RoomLayout>
             <div className={styles.room}>
@@ -111,21 +113,24 @@ export default function LiveRoom({ roomId }) {
                         {room && participants.map((participant) => <TrackPublication key={participant.identity} participant={participant} />)}
                     </div>
 
-
                     <section className={styles.room__participants_list}>
                         <header>
                             <h4>En la llamada</h4>
                         </header>
-                        
+
                         <ul>
                             {participants.map(participant => (
                                 <li key={participant.sid}>
-                                    <Participant id={participant.identity}  />
+                                    <Participant id={participant.identity} />
                                 </li>
                             ))}
                         </ul>
 
-                        <footer><p>Sub footer con menú</p></footer>
+                        <footer>
+                            <Button><People width={32} height={32} /></Button>
+                            <Button><Chat width={32} height={32} /></Button>
+                            <Button><Settings width={32} height={32} /></Button>
+                        </footer>
                     </section>
 
                 </div>

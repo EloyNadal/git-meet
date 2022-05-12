@@ -3,6 +3,15 @@ import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth, GithubAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 
+const GUEST_USER = {
+    avatar_url: 'https://avatars.githubusercontent.com/u/4708922?v=4',
+    blog: '',
+    name: '',
+    id: false,
+    login: 'Invitado',
+};
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -16,7 +25,7 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
-//const firebaseConfig = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_CONFIG);
+
 
 // Initialize Firebase
 //solo si no se ha iniciado antes
@@ -24,7 +33,7 @@ const app = !getApps().length && initializeApp(firebaseConfig);
 const db = getFirestore();
 
 const mapUserFromFirebaseAuth = (user) => {
-    
+
     const { reloadUserInfo, uid } = user;
     const { screenName, photoUrl, displayName } = reloadUserInfo;
     const gitHubUrl = 'https://github.com/';
@@ -87,4 +96,13 @@ export const loginWithGitHub = () => {
 
         });
 }
+
+export const getGitUser = async (id) => {
+    return await fetch(`https://api.github.com/users/${id}`)
+        .then(res => {
+            if (res.ok) return res.json();
+            return GUEST_USER;
+        })
+        .catch(err => GUEST_USER);
+};
 

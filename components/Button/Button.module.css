@@ -37,3 +37,8 @@
     box-shadow: #fff 0 0 0 2px inset;
     opacity: 1;
 }
+
+.warning {
+    background: #d80000;
+    color: #fff;
+}

@@ -20,7 +20,8 @@ export const startRoom = async (roomId, userName) => {
 
 async function joinVideoRoom(roomId, token) {
     const room = await connect(token, {
-        room: roomId
+        room: roomId,
+        //automaticSubscription: false,
     });
 
     return room;

@@ -1,13 +1,13 @@
 import { useAppContext } from 'context/state';
 import Link from 'next/link';
 import GitHub from 'components/Icons/GitHub';
-import Button from 'components/Buttton';
+import Button from 'components/Button';
 import styles from './RoomLayout.module.css';
-
-/**
- * @todo
- * - [ ] desconectar usuario de la sala al ir a la página de inicio
- */
+import Camera from 'components/Icons/Camera';
+import CameraOff from 'components/Icons/CameraOff';
+import Micro from 'components/Icons/Micro';
+import MicroOff from 'components/Icons/MicroOff';
+import Phone from 'components/Icons/Phone';
 
 export default function RoomLayout({ children }) {
 
@@ -31,7 +31,17 @@ export default function RoomLayout({ children }) {
 
             <footer>
                 <Button onClick={mycontext.handleChangeEnabledVideo}>
-                    {mycontext.videoIsEnabled ? 'Desactivar' : 'Activar'}
+                    {mycontext.videoIsEnabled 
+                        ? <Camera width={32} height={32} /> 
+                        : <CameraOff width={32} height={32} />}
+                </Button>
+                <Button onClick={mycontext.handleExitRoom} className={'warning'}>
+                    <Phone width={32} height={32} />
+                </Button>
+                <Button onClick={mycontext.handleChangeEnabledAudio}>
+                    {mycontext.audioIsEnabled
+                        ? <Micro width={32} height={32} /> 
+                        : <MicroOff width={32} height={32} />}
                 </Button>
             </footer>
         </main>

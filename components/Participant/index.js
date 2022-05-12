@@ -1,32 +1,10 @@
-import { useState } from 'react';
-
-import { useEffectOnce } from 'hooks/useEffectOnce';
 import Avatar from 'components/Avatar';
-import { GUEST_USER } from 'hooks/useUser';
-
 import styles from './Participant.module.css';
+import useGitUser from 'hooks/useGitUser';
 
 export default function Participant({ id }) {
 
-    const [user, setUser] = useState(null);
-
-    useEffectOnce(() => {
-
-        const getUser = async () => {
-            const userData = await fetch(`https://api.github.com/users/${id}`)
-                        .then(res => {
-                            if(res.ok) return res.json();
-                            return GUEST_USER;
-                        })
-                        .catch(err => GUEST_USER);
-
-            console.log('User data: ', userData);
-
-            setUser(userData);
-        };
-
-        getUser();
-    }, []);
+    const user = useGitUser(id);
 
     return (
         <>

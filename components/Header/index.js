@@ -1,5 +1,5 @@
 import Avatar from "components/Avatar";
-import Button from "components/Buttton";
+import Button from "components/Button";
 import GitHub from "components/Icons/GitHub";
 import useUser, { USER_STATES } from "hooks/useUser";
 import Image from "next/image";

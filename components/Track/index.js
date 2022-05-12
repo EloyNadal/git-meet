@@ -1,10 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
-import styles from './Track.module.css';
+import { useEffect, useState } from 'react';
+import VideoTrack from 'components/VideoTrack';
 
-export default function Track({ trackPublication }) {
+export default function Track({ trackPublication, userIdentity }) {
 
     const [track, setTrack] = useState([]);
-    const videoRef = useRef();
 
     useEffect(() => {
 
@@ -15,11 +14,13 @@ export default function Track({ trackPublication }) {
         }
 
         console.log('Track started: ', trackPublication.track);
+
         // Reset the track when the 'trackPublications' variable changes.
         setTrack(trackPublication && trackPublication.track);
 
         if (trackPublication) {
             trackPublication.on('enabled', () => { console.log('Track enabled: ', trackPublication.track); });
+            trackPublication.on('disabled', () => { console.log('Track disabled: ', trackPublication.track); });
             trackPublication.on('subscribed', handleTrackStarted);
             trackPublication.on('unsubscribed', removeTrack);
             return () => {
@@ -31,40 +32,25 @@ export default function Track({ trackPublication }) {
 
     useEffect(() => {
 
-        const videoContainer = videoRef.current;
+        if (track && track.kind === 'audio') {
 
-        if (track && track.kind === 'video') {
-
-            track.attach(videoContainer);
-            return () => {
-                track.detach(videoContainer);
-                videoContainer.srcObject = null;
-            };
-        } else if (track && track.kind === 'audio') {
-
-            /* const audio = document.createElement('audio');
-            audio.srcObject = track.attach();       */
             const audio = track.attach();
             document.body.appendChild(audio);
 
             return () => {
-
                 track.detach().forEach(el => {
                     el.remove();
                     el.srcObject = null;
                 });
-
             };
-
         }
 
     }, [track]);
 
-
     return (
         <>
             {track && track.kind === 'video'
-                && <video className={styles.video} ref={videoRef} />
+                && <VideoTrack track={track} userIdentity={userIdentity}/>
             }
         </>
     );
