@@ -6,10 +6,13 @@ import Image from "next/image";
 import styles from './Header.module.css'
 import { loginWithGitHub } from "services/firebase/client";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Header({ withButtons = true }) {
 
   const user = useUser();
+  const router = useRouter();
 
   const handleClick = () => {
     loginWithGitHub()

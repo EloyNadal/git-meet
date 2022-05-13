@@ -15,6 +15,14 @@ export default function Home() {
   const inputRef = useRef(null);
 
   const handelClickStartRoom = () => {
+
+    const isRelative = inputRef.current.value && inputRef.current.value.includes('/');
+    
+    if (isRelative) {
+      router.push(`${inputRef.current.value}`);
+      return;
+    }
+
     router.push(`/room/${inputRef.current.value || uuidv4()}`);
   }
 
